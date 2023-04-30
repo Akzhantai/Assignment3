@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class MyLinkedList<T> implements MyList<T> {
 
     private class Node {
@@ -140,7 +142,7 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public void sort() {
         // This implementation of sort is not efficient for linked lists,
-        // so we'll just leave it unimplemented
+        // so I'll just leave it unimplemented
     }
     @Override
     public boolean isEmpty() {
@@ -157,6 +159,23 @@ public class MyLinkedList<T> implements MyList<T> {
         head = newNode;
         size++;
     }
+    @Override
+    public T removeFirst() {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        T removedElement = head.element;
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+        size--;
+        return removedElement;
+    }
+
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
