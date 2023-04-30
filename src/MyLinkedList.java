@@ -143,6 +143,10 @@ public class MyLinkedList<T> implements MyList<T> {
         // so we'll just leave it unimplemented
     }
     @Override
+    public boolean isEmpty() {
+        return size == 0;
+}
+    @Override
     public void addFirst(T element) {
         Node newNode = new Node(element, head, null);
         if (head == null) {
@@ -153,8 +157,6 @@ public class MyLinkedList<T> implements MyList<T> {
         head = newNode;
         size++;
     }
-
-
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
