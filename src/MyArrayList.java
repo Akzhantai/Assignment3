@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class MyArrayList<T> implements MyList<T> {
 
     private Object[] elements;
@@ -126,6 +128,19 @@ public class MyArrayList<T> implements MyList<T> {
         elements[0] = item;
         size++;
     }
+    public T removeFirst() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        T removed = (T) elements[0];
+        for (int i = 0; i < size - 1; i++) {
+            elements[i] = elements[i + 1];
+        }
+        elements[size - 1] = null;
+        size--;
+        return removed;
+    }
+
     private void ensureCapacity(int minCapacity) {
         int oldCapacity = elements.length;
         if (minCapacity > oldCapacity) {
