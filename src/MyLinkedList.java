@@ -142,6 +142,18 @@ public class MyLinkedList<T> implements MyList<T> {
         // This implementation of sort is not efficient for linked lists,
         // so we'll just leave it unimplemented
     }
+    @Override
+    public void addFirst(T element) {
+        Node newNode = new Node(element, head, null);
+        if (head == null) {
+            tail = newNode;
+        } else {
+            head.prev = newNode;
+        }
+        head = newNode;
+        size++;
+    }
+
 
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
