@@ -11,5 +11,7 @@ public interface MyList<T>{
     int lastIndexOf(Object o);
     void sort();
 
+    boolean isEmpty();
+
     void addFirst(T element);
 }
