@@ -114,7 +114,14 @@ public class MyArrayList<T> implements MyList<T> {
             }
         }
     }
-
+    public void addFirst(T item) {
+        ensureCapacity(size + 1);
+        for (int i = size; i > 0; i--) {
+            elements[i] = elements[i - 1];
+        }
+        elements[0] = item;
+        size++;
+    }
     private void ensureCapacity(int minCapacity) {
         int oldCapacity = elements.length;
         if (minCapacity > oldCapacity) {
