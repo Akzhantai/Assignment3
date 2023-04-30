@@ -14,4 +14,6 @@ public interface MyList<T>{
     boolean isEmpty();
 
     void addFirst(T element);
+
+    T removeFirst();
 }
