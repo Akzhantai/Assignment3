@@ -13,6 +13,8 @@ public interface MyList<T>{
 
     boolean isEmpty();
 
+    T getFirst();
+
     void addFirst(T element);
 
     T removeFirst();
