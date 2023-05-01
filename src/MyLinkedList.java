@@ -168,6 +168,18 @@ public class MyLinkedList<T> implements MyList<T> {
         size++;
     }
     @Override
+    public void addLast(T element) {
+        Node newNode = new Node(element, null, tail);
+        if (size == 0) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+        }
+        tail = newNode;
+        size++;
+    }
+
+    @Override
     public T removeFirst() {
         if (head == null) {
             throw new NoSuchElementException();
