@@ -8,4 +8,10 @@ public class MyArrayListStack<T> {
     public void push(T element) {
         stack.add(element);
     }
+    public T pop() {
+        if (stack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.remove(stack.size() - 1);
+    }
 }
