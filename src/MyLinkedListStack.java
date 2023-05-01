@@ -1,3 +1,6 @@
+import java.util.EmptyStackException;
+
+
 public class MyLinkedListStack<T> {
     private MyLinkedList<T> stack;
 
@@ -7,5 +10,11 @@ public class MyLinkedListStack<T> {
 
     public void push(T element) {
         stack.addFirst(element);
+    }
+    public T pop() {
+        if (stack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.removeFirst();
     }
 }
