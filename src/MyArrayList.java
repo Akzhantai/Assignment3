@@ -120,6 +120,13 @@ public class MyArrayList<T> implements MyList<T> {
     public boolean isEmpty() {
         return size == 0;
     }
+    public T getFirst() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+        return (T) elements[0];
+    }
+
     public void addFirst(T item) {
         ensureCapacity(size + 1);
         for (int i = size; i > 0; i--) {
