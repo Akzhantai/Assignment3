@@ -9,12 +9,10 @@ public class MyArrayList<T> implements MyList<T> {
         elements = new Object[10];
         size = 0;
     }
-
     @Override
     public int size() {
         return size;
     }
-
     @Override
     public boolean contains(Object o) {
         for (int i = 0; i < size; i++) {
@@ -24,14 +22,12 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return false;
     }
-
     @Override
     public void add(T item) {
         ensureCapacity(size + 1);
         elements[size] = item;
         size++;
     }
-
     @Override
     public void add(T item, int index) {
         if (index < 0 || index > size) {
@@ -44,7 +40,6 @@ public class MyArrayList<T> implements MyList<T> {
         elements[index] = item;
         size++;
     }
-
     @Override
     public boolean remove(T item) {
         for (int i = 0; i < size; i++) {
@@ -55,7 +50,6 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return false;
     }
-
     @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {
@@ -69,13 +63,11 @@ public class MyArrayList<T> implements MyList<T> {
         size--;
         return removed;
     }
-
     @Override
     public void clear() {
         elements = new Object[10];
         size = 0;
     }
-
     @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
@@ -83,7 +75,6 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return (T) elements[index];
     }
-
     @Override
     public int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
@@ -93,7 +84,6 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return -1;
     }
-
     @Override
     public int lastIndexOf(Object o) {
         for (int i = size - 1; i >= 0; i--) {
@@ -103,7 +93,6 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return -1;
     }
-
     @Override
     public void sort() {
         for (int i = 0; i < size - 1; i++) {
@@ -126,13 +115,17 @@ public class MyArrayList<T> implements MyList<T> {
         }
         return (T) elements[0];
     }
-
     public void addFirst(T item) {
         ensureCapacity(size + 1);
         for (int i = size; i > 0; i--) {
             elements[i] = elements[i - 1];
         }
         elements[0] = item;
+        size++;
+    }
+    public void addLast(T item) {
+        ensureCapacity(size + 1);
+        elements[size] = item;
         size++;
     }
     public T removeFirst() {
@@ -147,7 +140,6 @@ public class MyArrayList<T> implements MyList<T> {
         size--;
         return removed;
     }
-
     private void ensureCapacity(int minCapacity) {
         int oldCapacity = elements.length;
         if (minCapacity > oldCapacity) {
