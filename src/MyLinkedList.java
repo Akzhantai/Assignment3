@@ -149,6 +149,14 @@ public class MyLinkedList<T> implements MyList<T> {
         return size == 0;
 }
     @Override
+    public T getFirst() {
+        if (head == null) {
+            throw new NoSuchElementException();
+        }
+        return head.element;
+    }
+
+    @Override
     public void addFirst(T element) {
         Node newNode = new Node(element, head, null);
         if (head == null) {
