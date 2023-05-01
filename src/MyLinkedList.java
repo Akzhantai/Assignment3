@@ -4,31 +4,36 @@ public class MyLinkedList<T> implements MyList<T> {
 
     private class Node {
         T element;
+        // Stores the data of the node.
         Node next;
+        // Stores a reference to the next node in the list.
         Node prev;
-
+        // Stores a reference to the previous node in the list.
         public Node(T element, Node next, Node prev) {
             this.element = element;
             this.next = next;
             this.prev = prev;
         }
+        // Constructor.
     }
 
     private Node head;
+    // Represent the first node in the list.
     private Node tail;
+    // Represent the last node in the list.
     private int size;
-
+    // Represent the number of elements in the list.
     public MyLinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
-
+    // Constructor.
     @Override
     public int size() {
         return size;
     }
-
+    // Returns the number of elements, size.
     @Override
     public boolean contains(Object o) {
         Node current = head;
@@ -40,7 +45,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         return false;
     }
-
+    // Checks whether a specified element is present in arraylist.
     @Override
     public void add(T element) {
         Node newNode = new Node(element, null, tail);
@@ -52,7 +57,7 @@ public class MyLinkedList<T> implements MyList<T> {
         tail = newNode;
         size++;
     }
-
+    // Adds a new element.
     @Override
     public void add(T element, int index) {
         if (index < 0 || index > size) {
@@ -68,7 +73,7 @@ public class MyLinkedList<T> implements MyList<T> {
         current.prev = newNode;
         size++;
     }
-
+    // Adds new element at specified index.
     @Override
     public boolean remove(T item) {
         int index = indexOf(item);
@@ -78,7 +83,7 @@ public class MyLinkedList<T> implements MyList<T> {
         remove(index);
         return true;
     }
-
+    //Removes the element.
     @Override
     public T remove(int index) {
         if (index < 0 || index >= size) {
@@ -98,19 +103,19 @@ public class MyLinkedList<T> implements MyList<T> {
         size--;
         return node.element;
     }
-
+    //Removes the element at the specified position.
     @Override
     public void clear() {
         head = null;
         tail = null;
         size = 0;
     }
-
+    // Removes all elements.
     @Override
     public T get(int index) {
         return getNode(index).element;
     }
-
+    // Returns an element at specified index.
     @Override
     public int indexOf(Object o) {
         Node current = head;
@@ -124,7 +129,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         return -1;
     }
-
+    // Returns the position of the first occurrence.
     @Override
     public int lastIndexOf(Object o) {
         Node current = tail;
@@ -138,7 +143,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         return -1;
     }
-
+    // Returns the position of the last occurrence.
     @Override
     public void sort() {
         // This implementation of sort is not efficient for linked lists,
@@ -147,7 +152,8 @@ public class MyLinkedList<T> implements MyList<T> {
     @Override
     public boolean isEmpty() {
         return size == 0;
-}
+    }
+    // Checks whether a list is empty or not.
     @Override
     public T getFirst() {
         if (head == null) {
@@ -155,7 +161,7 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         return head.element;
     }
-
+    // Returns the first element.
     @Override
     public void addFirst(T element) {
         Node newNode = new Node(element, head, null);
@@ -167,6 +173,7 @@ public class MyLinkedList<T> implements MyList<T> {
         head = newNode;
         size++;
     }
+    // Inserts the specified element at the beginning.
     @Override
     public void addLast(T element) {
         Node newNode = new Node(element, null, tail);
@@ -178,7 +185,7 @@ public class MyLinkedList<T> implements MyList<T> {
         tail = newNode;
         size++;
     }
-
+    // Inserts the specified element at the end.
     @Override
     public T removeFirst() {
         if (head == null) {
@@ -195,7 +202,7 @@ public class MyLinkedList<T> implements MyList<T> {
         size--;
         return removedElement;
     }
-
+    // Removes and returns the first element.
     private Node getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -214,4 +221,5 @@ public class MyLinkedList<T> implements MyList<T> {
         }
         return current;
     }
+    // Return the object at the specified index in the list.
 }
