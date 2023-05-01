@@ -20,4 +20,10 @@ public class MyArrayListStack<T> {
         }
         return stack.getFirst();
     }
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+    public int size() {
+        return stack.size();
+    }
 }
