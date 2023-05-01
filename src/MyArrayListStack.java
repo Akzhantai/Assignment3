@@ -14,4 +14,10 @@ public class MyArrayListStack<T> {
         }
         return stack.removeFirst();
     }
+    public T peek() {
+        if (stack.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return stack.getFirst();
+    }
 }
